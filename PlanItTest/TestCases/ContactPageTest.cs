@@ -43,10 +43,10 @@ namespace TestPlanIt
 
         }
         ///<summary>
-        ///Test case 1.2:
-        ///1.	From the home page go to contact page
-        // 2.  Populate mandatory fields
-        ///3.	Validate errors are gone
+        ///     Test case 1.2:
+        /// 1.	From the home page go to contact page
+        /// 2.  Populate mandatory fields
+        /// 3.	Validate errors are gone
         ///</summary>
         [Test, Order(2)]
         public void EnterValidDataToMandatoryFields()
@@ -69,11 +69,11 @@ namespace TestPlanIt
         }
 
         ///<summary>
-        ///Test case 2:
-        ///1.	From the home page go to contact page
-        ///2.	Populate mandatory fields
-        ///3.	Click submit button
-        ///4.	Validate successful submission message
+        ///     Test case 2:
+        /// 1.	From the home page go to contact page
+        /// 2.	Populate mandatory fields
+        /// 3.	Click submit button
+        /// 4.	Validate successful submission message
         ///</summary>
 
         [Test, Order(3)]
@@ -88,6 +88,7 @@ namespace TestPlanIt
             navBar.GetHomePage();
         }
         ///<summary>
+        ///     Test case 3:
         ///1.	From the home page go to contact page
         ///2.	Populate all fields with invalid data
         ///3.	Validate errors
@@ -107,28 +108,7 @@ namespace TestPlanIt
 
         }
 
-        ///<summary>
-        ///Test case 4:
-        ///1.	From the home page go to contact page
-        ///2.	Populate mandatory fields
-        ///3.	Click submit button
-        ///4.	Validate successful submission message
-        ///</summary>
-      /*  [Test, Order(5)]
-        public void GetShopPage()
-        {
-            navBar.GetShopPage();
-            ShopPage shopPage = new ShopPage(driver);
-            shopPage = new ShopPage(driver);
-            shopPage.ClickFunnyCowToBuy();
-            shopPage.ClickFunnyCowToBuy();
-            shopPage.ClickBunnyoBuy();
-            navBar.GetCartPage();
-            CartPage cartPage = new CartPage(driver);
-            Assert.IsTrue(cartPage.GetItem("Funny Cow"));
-            Assert.IsTrue(cartPage.GetItem("Bunny"));
 
-        }*/
 
         [Test, Order(5)]
         public void TearDown()
