@@ -36,11 +36,13 @@ namespace PlanItTest.Pages
             }
         }
 
-
-        public string GetTextVale(String element)
+        // Return element text value
+        public string GetTextValue(String element)
         {
             return driver.FindElement(By.Id(element)).Text;
         }
+
+        //  Return element display
         public bool IsElementDisplay(string element)
         {
 

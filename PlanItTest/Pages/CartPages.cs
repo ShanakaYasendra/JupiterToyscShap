@@ -20,7 +20,7 @@ namespace PlanItTest.Pages
             PageFactory.InitElements(driver, this);
         }
 
-
+        // Return cart item
         public bool GetItem(string item)
         {
 

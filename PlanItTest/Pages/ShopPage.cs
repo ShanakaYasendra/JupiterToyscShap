@@ -19,12 +19,14 @@ namespace PlanItTest.Pages
             PageFactory.InitElements(driver, this);
         }
 
-
+        // Find the Funny Cow element
         [FindsBy(How = How.CssSelector, Using = "#product-6 .btn")]
         public IWebElement FunnyCow
         {
             get; set;
         }
+
+        // Find the Bunny element
         [FindsBy(How = How.CssSelector, Using = "#product-4 .btn")]
         public IWebElement Bunny
         {

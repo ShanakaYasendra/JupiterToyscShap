@@ -70,12 +70,14 @@ namespace PlanItTest.Pages
             get; set;
         }
 
+        // Find message
         [FindsBy(How = How.XPath, Using = "//div[contains(@class,'alert alert-success')]")]
         public IWebElement SuccessMsg
         {
             get; set;
         }
 
+        // Find Model
         [FindsBy(How = How.CssSelector, Using = ".modal - body")]
         public IWebElement Modal
         {
@@ -117,7 +119,7 @@ namespace PlanItTest.Pages
         public string GetErrorMessage(string fieldName)
         {
             string element = fieldName + "-err";
-            return GetTextVale(element);
+            return GetTextValue(element);
         }
 
         public bool IsErrorPresent(string fieldName)
@@ -139,6 +141,7 @@ namespace PlanItTest.Pages
                 {
                     isDisplay = driver.FindElement(By.CssSelector(".modal-body")).Enabled;
                     Console.WriteLine(isDisplay);
+                    count++;
 
                 }
                 catch (Exception e)
