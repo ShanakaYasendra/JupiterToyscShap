@@ -1,4 +1,4 @@
-﻿using TestPlanIt.Pages;
+﻿using PlanItTest.Pages;
 
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
@@ -6,7 +6,7 @@ using System.Threading;
 using System;
 using OpenQA.Selenium.Support.UI;
 
-namespace TestPlanIt.Pages
+namespace PlanItTest.Pages
 {
     public class ContactPage : BasePage
     {
@@ -128,10 +128,11 @@ namespace TestPlanIt.Pages
 
         public string waitForModeltoClose()
         {
-            _ = wait;
+
+            int count = 0;
 
             bool isDisplay = true;
-            while (isDisplay.Equals(true))
+            while ((isDisplay.Equals(true))||(count<50))
             {
                 // count = driver.WindowHandles.Count;
                 try
@@ -143,9 +144,12 @@ namespace TestPlanIt.Pages
                 catch (Exception e)
                 {
                     isDisplay = false;
+                    return "pass";
                 }
+               
             }
-            return "pass";
+            return "fail";
+
         }
 
     }

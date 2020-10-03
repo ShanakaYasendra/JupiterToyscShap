@@ -1,14 +1,18 @@
 using NUnit.Framework;
-using TestPlanIt.Pages;
+using PlanItTest.Pages;
 
 namespace PlanItTest
 {
+    [TestFixture]
     public class ShopingCartTest:BasePage
     {
+        public ShopPage shopPage;
+
         [SetUp]
         public void Setup()
         {
             navBar.GetShopPage();
+            shopPage = new ShopPage(driver);
         }
         ///<summary>
         /// Test case 4:
@@ -19,12 +23,11 @@ namespace PlanItTest
         /// 5.	Verify the items are in the cart
 
         ///</summary>
-        [Test]
+        [Test,Order(5)]
         public void AddingItemtoCartTest()
         {
-            
-                
-                ShopPage shopPage = new ShopPage(driver);
+                //navBar.GetShopPage();
+               // ShopPage shopPage = new ShopPage(driver);
                 shopPage = new ShopPage(driver);
                 shopPage.ClickFunnyCowToBuy();
                 shopPage.ClickFunnyCowToBuy();
@@ -36,6 +39,10 @@ namespace PlanItTest
 
             
         }
-       
+        [Test, Order(6)]
+        public void TearDown()
+        {
+            TestCleanUp();
+        }
     }
 }

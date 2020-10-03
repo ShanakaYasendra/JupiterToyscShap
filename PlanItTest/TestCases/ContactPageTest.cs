@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using TestPlanIt.Pages;
+using PlanItTest.Pages;
 using System.Threading;
 
-namespace TestPlanIt
+namespace PlanItTest
 {
     [TestFixture]
     public class ContactPageTest : BasePage
@@ -110,11 +110,7 @@ namespace TestPlanIt
 
 
 
-        [Test, Order(5)]
-        public void TearDown()
-        {
-            TestCleanUp();
-        }
+      
 
 
     }

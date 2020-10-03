@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
-namespace TestPlanIt.Pages
+namespace PlanItTest.Pages
 {
     public class CartPage
     {

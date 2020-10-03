@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 
-namespace TestPlanIt.Pages
+namespace PlanItTest.Pages
 {
     public class NavBar
     {
