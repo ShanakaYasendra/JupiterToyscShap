@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Threading;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
 namespace PlanItTest.Pages
@@ -9,7 +7,7 @@ namespace PlanItTest.Pages
     public class ShopPage
     {
         private IWebDriver driver;
-        private WebDriverWait wait;
+       
 
         public ShopPage(IWebDriver driver)
         {
@@ -35,21 +33,12 @@ namespace PlanItTest.Pages
 
         public void ClickFunnyCowToBuy()
         {
-
-         
-               
-                FunnyCow.Click();
-
-            
-
-
+            FunnyCow.Click();
         }
+
         public void ClickBunnyoBuy()
         {
-            
             Bunny.Click();
-
-
         }
     }
 }

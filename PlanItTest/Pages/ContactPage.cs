@@ -1,17 +1,13 @@
-﻿using PlanItTest.Pages;
-
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System.Threading;
 using System;
-using OpenQA.Selenium.Support.UI;
 
 namespace PlanItTest.Pages
 {
     public class ContactPage : BasePage
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
+        private new readonly IWebDriver driver;
+
 
 
         public ContactPage(IWebDriver driver)
@@ -142,13 +138,14 @@ namespace PlanItTest.Pages
                 try
                 {
                     isDisplay = driver.FindElement(By.CssSelector(".modal-body")).Enabled;
-                    Console.WriteLine(isDisplay);
+                    //Console.WriteLine(isDisplay);
                     count++;
 
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     isDisplay = false;
+                   // Console.WriteLine(e);
                     return "pass";
                 }
                

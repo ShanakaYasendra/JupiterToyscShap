@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using Microsoft.Extensions.Configuration;
+
 
 namespace PlanItTest.Pages
 {
