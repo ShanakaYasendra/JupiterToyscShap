@@ -7,12 +7,14 @@ namespace PlanItTest
     public class ShopingCartTest:BasePage
     {
         public ShopPage shopPage;
-
+        public NavBar navBar;
         [SetUp]
         public void Setup()
         {
+            Setup("https://jupiter.cloud.planittesting.com/");
+            navBar = new NavBar(driver);
             navBar.GetShopPage();
-            shopPage = new ShopPage(driver);
+          
         }
         ///<summary>
         /// Test case 4:
@@ -23,11 +25,10 @@ namespace PlanItTest
         /// 5.	Verify the items are in the cart
 
         ///</summary>
-        [Test,Order(5)]
+        [Test]
         public void AddingItemtoCartTest()
         {
-                //navBar.GetShopPage();
-               // ShopPage shopPage = new ShopPage(driver);
+          
                 shopPage = new ShopPage(driver);
                 shopPage.ClickFunnyCowToBuy();
                 shopPage.ClickFunnyCowToBuy();
@@ -39,7 +40,7 @@ namespace PlanItTest
 
             
         }
-        [Test, Order(6)]
+        [TearDown]
         public void TearDown()
         {
             TestCleanUp();

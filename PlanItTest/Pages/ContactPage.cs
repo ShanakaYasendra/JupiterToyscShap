@@ -17,7 +17,7 @@ namespace PlanItTest.Pages
         public ContactPage(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             PageFactory.InitElements(driver, this);
 
         }
@@ -86,6 +86,7 @@ namespace PlanItTest.Pages
 
         public void EnterDataToMandatoryFields(string forename, string email, string message)
         {
+           
             Forename.Clear();
             Forename.SendKeys(forename);
             Email.Clear();
@@ -97,6 +98,7 @@ namespace PlanItTest.Pages
 
         public void EnterDataToAllFields(string forename, string email, string telno, string message)
         {
+           
             Forename.Clear();
             Forename.SendKeys(forename);
             Email.Clear();
@@ -111,8 +113,8 @@ namespace PlanItTest.Pages
 
         public void ClickSubmit()
         {
-            Thread.Sleep(1000);
-            //  _ = wait;
+            
+           
             Submitbtn.Click();
         }
 

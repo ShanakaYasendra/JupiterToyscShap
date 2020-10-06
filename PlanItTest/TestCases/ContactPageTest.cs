@@ -14,6 +14,8 @@ namespace PlanItTest
         [SetUp]
         public void Setup()
         {
+            Setup("https://jupiter.cloud.planittesting.com/");
+            NavBar navBar = new NavBar(driver);
             navBar.GetContactPage();
             contactPage = new ContactPage(driver);
         }
@@ -37,8 +39,7 @@ namespace PlanItTest
             Assert.AreEqual(contactPage.GetErrorMessage("message"), "Message is required");
 
 
-            navBar.GetHomePage();
-
+     
 
 
         }
@@ -51,10 +52,6 @@ namespace PlanItTest
         [Test, Order(2)]
         public void EnterValidDataToMandatoryFields()
         {
-            Thread.Sleep(1000);
-            navBar.GetContactPage();
-
-            contactPage = new ContactPage(driver);
             contactPage.Forename.SendKeys("John");
             Assert.IsFalse(contactPage.IsErrorPresent("forename"));
 
@@ -64,7 +61,7 @@ namespace PlanItTest
             contactPage.Message.SendKeys("Hi How are You");
             Assert.IsFalse(contactPage.IsErrorPresent("message"));
 
-            navBar.GetHomePage();
+        
 
         }
 
@@ -79,13 +76,12 @@ namespace PlanItTest
         [Test, Order(3)]
         public void ValidDataToMandatoryFields()
         {
-            navBar.GetContactPage();
-            contactPage = new ContactPage(driver);
+          
             contactPage.EnterDataToMandatoryFields("Jim", "Jim@test.com", "Hi How are You");
             contactPage.ClickSubmit();
             Assert.AreEqual(contactPage.waitForModeltoClose(), "pass");
             Assert.AreEqual(contactPage.SuccessMsg.Text, "Thanks Jim, we appreciate your feedback.");
-            navBar.GetHomePage();
+        
         }
         ///<summary>
         ///     Test case 3:
@@ -99,8 +95,8 @@ namespace PlanItTest
         [Test, Order(4)]
         public void InvalidDataToAllFields()
         {
-            navBar.GetContactPage();
-            contactPage = new ContactPage(driver);
+          
+          
             contactPage.EnterDataToAllFields("Shan123", "Jim@", "123SS", "Hi How are@@@@@34342533////// You");
             Assert.AreEqual(contactPage.GetErrorMessage("email"), "Please enter a valid email");
             Assert.AreEqual(contactPage.GetErrorMessage("telephone"), "Please enter a valid telephone number");
@@ -108,7 +104,11 @@ namespace PlanItTest
 
         }
 
-
+        [TearDown]
+        public void TearDown()
+        {
+            TestCleanUp();
+        }
 
       
 

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Threading;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
 namespace PlanItTest.Pages
@@ -11,12 +9,12 @@ namespace PlanItTest.Pages
 
 
         private IWebDriver driver;
-        private WebDriverWait wait;
+       
 
         public CartPage(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             PageFactory.InitElements(driver, this);
         }
 
@@ -24,7 +22,6 @@ namespace PlanItTest.Pages
         public bool GetItem(string item)
         {
 
-            Thread.Sleep(1000);
             return driver.FindElement(By.XPath("//td[contains(.,'" + item + "')]")).Displayed;
         }
     }

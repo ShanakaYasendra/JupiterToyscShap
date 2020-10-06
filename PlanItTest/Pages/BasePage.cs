@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Microsoft.Extensions.Configuration;
 
 namespace PlanItTest.Pages
 {
@@ -17,23 +18,17 @@ namespace PlanItTest.Pages
 
         public static IWebDriver driver;
 
-        // create varible for Navigation page
-        public static NavBar navBar;
         public BasePage()
         {
-            //initialize the webdriver
-            if (driver == null)
-            {
+         
+        }
 
-                driver = new ChromeDriver();
+        public void Setup(string url)
+        {
+            driver = new ChromeDriver();
+            driver.Navigate().GoToUrl(url);
+           
 
-                driver.Navigate().GoToUrl("https://jupiter.cloud.planittesting.com/");
-                driver.Manage().Window.Maximize();
-
-
-                navBar = new NavBar(driver);
-
-            }
         }
 
         // Return element text value
@@ -62,4 +57,6 @@ namespace PlanItTest.Pages
             driver.Quit();
         }
     }
+
+ 
 }

@@ -14,8 +14,8 @@ namespace PlanItTest.Pages
         public ShopPage(IWebDriver driver)
         {
             this.driver = driver;
-
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            // wait = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
             PageFactory.InitElements(driver, this);
         }
 
@@ -36,23 +36,17 @@ namespace PlanItTest.Pages
         public void ClickFunnyCowToBuy()
         {
 
-            //Thread.Sleep(1000);
-            try
-            {
-                FunnyCow.Click();
-            }
-            catch (Exception)
-            {
-                Thread.Sleep(1000);
+         
+               
                 FunnyCow.Click();
 
-            }
+            
 
 
         }
         public void ClickBunnyoBuy()
         {
-            // Thread.Sleep(1000);
+            
             Bunny.Click();
 
 
