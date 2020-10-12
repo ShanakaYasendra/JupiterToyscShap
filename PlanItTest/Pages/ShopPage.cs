@@ -31,6 +31,12 @@ namespace PlanItTest.Pages
             get; set;
         }
 
+        public void AddItemToTheCart(string item)
+        {
+            driver.FindElement(By.XPath("//h4[contains(.,'"+item+"')]/following-sibling::p/a")).Click();
+        }
+
+
         public void ClickFunnyCowToBuy()
         {
             FunnyCow.Click();

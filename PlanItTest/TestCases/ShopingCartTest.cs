@@ -30,7 +30,8 @@ namespace PlanItTest
         {
           
                 shopPage = new ShopPage(driver);
-                shopPage.ClickFunnyCowToBuy();
+                shopPage.AddItemToTheCart("Funny Cow");
+                //shopPage.ClickFunnyCowToBuy();
                 shopPage.ClickFunnyCowToBuy();
                 shopPage.ClickBunnyoBuy();
                 navBar.GetCartPage();
@@ -43,7 +44,7 @@ namespace PlanItTest
         [TearDown]
         public void TearDown()
         {
-            TestCleanUp();
+           TestCleanUp();
         }
     }
 }
