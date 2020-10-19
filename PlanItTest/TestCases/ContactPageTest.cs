@@ -15,9 +15,9 @@ namespace PlanItTest
         public void Setup()
         {
             Setup("https://jupiter.cloud.planittesting.com/");
-            NavBar navBar = new NavBar(driver);
-            navBar.GetContactPage();
-            contactPage = new ContactPage(driver);
+        
+          
+            contactPage = navBar.GetContactPage();
         }
 
 

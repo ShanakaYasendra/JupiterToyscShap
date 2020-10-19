@@ -17,6 +17,7 @@ namespace PlanItTest.Pages
         //create webdriver varible
 
         public static IWebDriver driver;
+        public NavBar navBar;
 
         public BasePage()
         {
@@ -27,7 +28,7 @@ namespace PlanItTest.Pages
         {
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(url);
-           
+            navBar = new NavBar(driver);
 
         }
 
