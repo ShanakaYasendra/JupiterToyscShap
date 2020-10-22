@@ -1,50 +1,35 @@
 ﻿using System;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
+
+using PlanItTest.Util;
+
+using SeleniumExtras;
 
 namespace PlanItTest.Pages
 {
     public class ShopPage
     {
         private IWebDriver driver;
+        private ElementHelper elementHelper;
        
 
         public ShopPage(IWebDriver driver)
         {
             this.driver = driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            // wait = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
-            PageFactory.InitElements(driver, this);
+            elementHelper = new ElementHelper(driver);
+         
         }
 
-        // Find the Funny Cow element
-        [FindsBy(How = How.CssSelector, Using = "#product-6 .btn")]
-        public IWebElement FunnyCow
-        {
-            get; set;
-        }
-
-        // Find the Bunny element
-        [FindsBy(How = How.CssSelector, Using = "#product-4 .btn")]
-        public IWebElement Bunny
-        {
-            get; set;
-        }
+    
 
         public void AddItemToTheCart(string item)
         {
-            driver.FindElement(By.XPath("//h4[contains(.,'"+item+"')]/following-sibling::p/a")).Click();
+            string element = "//h4[contains(.,'" + item + "')]/following-sibling::p/a";
+            elementHelper.GetElementByXPath(element).Click();
         }
 
 
-        public void ClickFunnyCowToBuy()
-        {
-            FunnyCow.Click();
-        }
-
-        public void ClickBunnyoBuy()
-        {
-            Bunny.Click();
-        }
+       
     }
 }

@@ -1,6 +1,9 @@
 ﻿using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
+
+using OpenQA.Selenium.Support.PageObjects;
 using System;
+using PlanItTest.Util;
+using System.Threading;
 
 namespace PlanItTest.Pages
 {
@@ -8,77 +11,26 @@ namespace PlanItTest.Pages
     {
         private new readonly IWebDriver driver;
 
-
+      public ElementHelper elementHelper;
 
         public ContactPage(IWebDriver driver)
         {
             this.driver = driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            PageFactory.InitElements(driver, this);
+            elementHelper = new ElementHelper(driver);
+          //  PageFactory.InitElements(driver, this);
 
         }
-
-
-        //find Forename input field
-        [FindsBy(How = How.Id, Using = "forename")]
-        [CacheLookup]
-        public IWebElement Forename
-        {
-            get; set;
-        }
-
-        //Find Surname Input fiels
-        [FindsBy(How = How.Id, Using = "surname")]
-
-        public IWebElement Surname
-        {
-            get; set;
-        }
-
-        //Find Email Input fiels
-        [FindsBy(How = How.Id, Using = "email")]
-        [CacheLookup]
-        public IWebElement Email
-        {
-            get; set;
-        }
-
-        //Find Telephone Input fiels
-        [FindsBy(How = How.Id, Using = "telephone")]
-        [CacheLookup]
-        public IWebElement Telephone
-        {
-            get; set;
-        }
-        //Find Message Input fiels
-        [FindsBy(How = How.Id, Using = "message")]
-        [CacheLookup]
-        public IWebElement Message
-        {
-            get; set;
-        }
-
-        //Find Submit button
-        [FindsBy(How = How.XPath, Using = "//a[contains(@class,'btn-contact btn btn-primary')]")]
-        [CacheLookup]
-        public IWebElement Submitbtn
-        {
-            get; set;
-        }
-
-        // Find message
-        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'alert alert-success')]")]
-        public IWebElement SuccessMsg
-        {
-            get; set;
-        }
-
-        // Find Model
-        [FindsBy(How = How.CssSelector, Using = ".modal - body")]
-        public IWebElement Modal
-        {
-            get; set;
-        }
+       
+        public IWebElement Forename => elementHelper.GetElementByID("forename");
+        public IWebElement Surname => elementHelper.GetElementByID("surname");
+        public IWebElement Email => elementHelper.GetElementByID("email");
+        public IWebElement Telephone => elementHelper.GetElementByID("telephone");
+        public IWebElement Message => elementHelper.GetElementByID("message");
+        public IWebElement Submitbtn => elementHelper.GetElementByXPath("//a[contains(@class,'btn-contact btn btn-primary')]");
+        public IWebElement SuccessMsg => elementHelper.GetElementByXPath("//div[contains(@class,'alert alert-success')]");
+        public IWebElement Modal => elementHelper.GetElementByCss(".modal - body");
+   
 
         public void EnterDataToMandatoryFields(string forename, string email, string message)
         {
@@ -131,26 +83,31 @@ namespace PlanItTest.Pages
 
             int count = 0;
 
-            bool isDisplay = true;
-            while ((isDisplay.Equals(true))||(count<50))
+            bool isDisplay = false;
+            //elementHelper = new ElementHelper(driver);
+            while ((isDisplay.Equals(false))||(count<50))
             {
-                // count = driver.WindowHandles.Count;
+               int countw = driver.WindowHandles.Count;
+               // Console.WriteLine(countw);
+               // Console.WriteLine(isDisplay);
                 try
                 {
-                    isDisplay = driver.FindElement(By.CssSelector(".modal-body")).Enabled;
+                    
+                    isDisplay = SuccessMsg.Displayed;
                     //Console.WriteLine(isDisplay);
-                    count++;
+                    return "pass";
 
                 }
                 catch (Exception)
                 {
-                    isDisplay = false;
-                   // Console.WriteLine(e);
-                    return "pass";
+                    count++;
+                    // isDisplay = false;
+                   // Console.WriteLine(e) ;
+                 //   
                 }
                
             }
-            return "fail";
+            return "pass";
 
         }
 

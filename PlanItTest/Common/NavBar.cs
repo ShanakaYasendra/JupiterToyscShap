@@ -22,7 +22,7 @@ namespace PlanItTest.Pages
         public HomePage GetHomePage()
         {
             driver.FindElement(By.LinkText("Home")).Click();
-            return new HomePage();
+            return new HomePage(driver);
         }
 
         //Navigate to Shop Page

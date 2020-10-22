@@ -4,7 +4,7 @@ namespace PlanItTest.Pages
 {
     public class HomePage
     {
-        public HomePage()
+        public HomePage(IWebDriver driver)
         {
         }
     }

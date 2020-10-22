@@ -31,11 +31,12 @@ namespace PlanItTest
           
                 shopPage = navBar.GetShopPage();
                 shopPage.AddItemToTheCart("Funny Cow");
-               
-                shopPage.ClickFunnyCowToBuy();
-                shopPage.ClickBunnyoBuy();
-              
-                CartPage cartPage = navBar.GetCartPage();
+                shopPage.AddItemToTheCart("Funny Cow");
+                shopPage.AddItemToTheCart("Bunny");
+            //shopPage.ClickFunnyCowToBuy();
+            //    shopPage.ClickBunnyoBuy();
+
+            CartPage cartPage = navBar.GetCartPage();
                 Assert.IsTrue(cartPage.GetItem("Funny Cow"));
                 Assert.IsTrue(cartPage.GetItem("Bunny"));
 

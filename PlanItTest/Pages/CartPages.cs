@@ -1,6 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
+//using SeleniumExtras.PageObjects;
 
 namespace PlanItTest.Pages
 {
@@ -15,7 +15,7 @@ namespace PlanItTest.Pages
         {
             this.driver = driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            PageFactory.InitElements(driver, this);
+         //   PageFactory.InitElements(driver, this);
         }
 
         // Return cart item
